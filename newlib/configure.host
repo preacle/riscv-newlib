@@ -214,12 +214,6 @@ case "${host_cpu}" in
   mep)
 	machine_dir=mep
 	;;
-  riscv*)
-  	libm_machine_dir=riscv
-	machine_dir=riscv
-	newlib_cflags="${newlib_cflags}"
-	default_newlib_atexit_dynamic_alloc="no"
-	;;
   mips*)
 	machine_dir=mips
 	;;
@@ -260,6 +254,12 @@ case "${host_cpu}" in
 	;;
   powerpc*)
 	machine_dir=powerpc
+	;;
+  riscv*)
+	libm_machine_dir=riscv
+	machine_dir=riscv
+	newlib_cflags="${newlib_cflags}"
+	default_newlib_atexit_dynamic_alloc="no"
 	;;
   rl78)
 	machine_dir=rl78
