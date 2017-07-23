@@ -115,7 +115,8 @@ _open(const char *name, int flags, int mode)
 // openat
 //------------------------------------------------------------------------
 // Open file relative to given directory
-int _openat(int dirfd, const char *name, int flags, int mode)
+int
+_openat(int dirfd, const char *name, int flags, int mode)
 {
   return syscall_errno (SYS_openat, dirfd, name, flags, mode);
 }
@@ -136,7 +137,8 @@ _lseek(int file, off_t ptr, int dir)
 //----------------------------------------------------------------------
 // Read from a file.
 
-ssize_t _read(int file, void *ptr, size_t len)
+ssize_t
+_read(int file, void *ptr, size_t len)
 {
   return syscall_errno (SYS_read, file, ptr, len, 0);
 }
@@ -209,7 +211,8 @@ _stat(const char *file, struct stat *st)
 //------------------------------------------------------------------------
 // Status of a link (by name).
 
-int _lstat(const char *file, struct stat *st)
+int
+_lstat(const char *file, struct stat *st)
 {
   struct kernel_stat kst;
   int rv = syscall_errno (SYS_lstat, file, &kst, 0, 0);
@@ -247,7 +250,8 @@ _access(const char *file, int mode)
 //------------------------------------------------------------------------
 // Permissions of a file (by name) in a given directory.
 
-int _faccessat(int dirfd, const char *file, int mode, int flags)
+int
+_faccessat(int dirfd, const char *file, int mode, int flags)
 {
   return syscall_errno (SYS_faccessat, dirfd, file, mode, flags);
 }
@@ -268,7 +272,8 @@ _close(int file)
 //------------------------------------------------------------------------
 // Establish a new name for an existing file.
 
-int _link(const char *old_name, const char *new_name)
+int
+_link(const char *old_name, const char *new_name)
 {
   return syscall_errno (SYS_link, old_name, new_name, 0, 0);
 }
@@ -341,7 +346,8 @@ _kill(int pid, int sig)
 // Wait for a child process. Minimal implementation for a system without
 // processes just causes an error.
 
-int _wait(int *status)
+int
+_wait(int *status)
 {
   errno = ECHILD;
   return -1;
@@ -435,7 +441,8 @@ _utime(const char *path, const struct utimbuf *times)
 //----------------------------------------------------------------------
 // Stub.
 
-int _chown(const char *path, uid_t owner, gid_t group)
+int
+_chown(const char *path, uid_t owner, gid_t group)
 {
   return -1;
 }
