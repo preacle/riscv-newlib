@@ -53,7 +53,7 @@ __internal_syscall(long n, long _a0, long _a1, long _a2, long _a3)
   register long a2 asm("a2") = _a2;
   register long a3 asm("a3") = _a3;
 
-#ifdef __riscv_32e
+#ifdef __riscv_e
   register long syscall_id asm("t0") = n;
 #else
   register long syscall_id asm("a7") = n;
